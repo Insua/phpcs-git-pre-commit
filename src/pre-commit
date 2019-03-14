@@ -1,0 +1,19 @@
+#!/usr/bin/env php
+<?php
+
+$phpcsCommand = "./vendor/bin/phpcs --standard=PSR2 --encoding=utf-8";
+$files = shell_exec("git diff --cached --name-only --diff-filter=ACMR HEAD | grep \\\\.php");
+$files = array_filter(explode(PHP_EOL, $files), function ($value) {
+    return strlen($value) > 3 && is_file($value) && preg_match('/(tests|database|vendor)\//', $value) === 0;
+});
+$errorCount = 0;
+foreach ($files as $file) {
+    $jsonReport = shell_exec($phpcsCommand." --report=json ".$file);
+    $totals = json_decode($jsonReport, true)['totals'];
+    $count = $totals['errors'] + $totals['warnings'];
+    $errorCount += $count;
+    if ($count > 0) {
+        print_r(shell_exec($phpcsCommand." -n ".$file));
+    }
+}
+exit($errorCount === 0 ? 0 : 1);

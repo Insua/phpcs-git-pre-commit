@@ -1,0 +1,20 @@
+{
+    "name": "insua\/phpcs-git-pre-commit",
+    "description": "Pure php phpcs git pre commit",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "insua",
+            "email": "insua@sohu.com"
+        }
+    ],
+    "require": {
+        "ext-json": "*",
+        "squizlabs/php_codesniffer": "^3.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Insua\\PhpcsGitPreCommit\\": "src"
+        }
+    }
+}
