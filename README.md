@@ -1,6 +1,6 @@
 <h1 align="center"> phpcs-git-pre-commit </h1>
 
-<p align="center"> Pure php phpcs git pre commit.</p>
+<p align="center">phpcs git pre commit.</p>
 
 
 ## Installing
