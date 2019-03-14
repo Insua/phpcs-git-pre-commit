@@ -6,10 +6,10 @@ class Installer
 {
     public static function postInstall()
     {
-        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-            system('cmd /c vendor\insua\phpcs-git-pre-commit\src\setup.bat');
-        } else {
-            system('sh vendor/insua/phpcs-git-pre-commit/src/setup.sh');
+        if (is_file("./git/hooks/pre-commit")) {
+            unlink("./git/hooks/pre-commit");
         }
+        copy("./vendor/insua/phpcs-git-pre-commit/src/pre-commit", "./.git/hooks/pre-commit");
+        chmod("./.git/hooks/pre-commit", 0777);
     }
 }
