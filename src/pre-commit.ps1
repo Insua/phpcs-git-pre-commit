@@ -74,9 +74,14 @@ function php_cs_check {
             write-host $file ": "  -foregroundcolor "gray"  -backgroundcolor "black" -NoNewline
 
             # skip test files
-            if ($file -match "test\/") {
-                write-host "SKIPPED! (test file)" -foregroundcolor "darkGreen" -backgroundcolor "black"
-            } else {
+            if ($file -match "tests\/")
+            {
+                write-host "SKIPPED! (tests file)" -foregroundcolor "darkGreen" -backgroundcolor "black"
+            } elseif ($file -match "database\/") {
+                write-host "SKIPPED! (database file)" -foregroundcolor "darkGreen" -backgroundcolor "black"
+            } elseif ($file -match "vendor\/") {
+                write-host "SKIPPED! (vendor file)" -foregroundcolor "darkGreen" -backgroundcolor "black"
+            }  else {
                 $errors = & $php_cs --standard=PSR2 -n --colors --report-width=120 $file
 
                 # Outputs the error
