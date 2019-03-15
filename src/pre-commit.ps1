@@ -116,8 +116,8 @@ function php_cs_check {
 }
 
 ### MAIN ###
-php_syntax_check $php_exe "php|phtml" $unstage_on_error
-write-host
+# php_syntax_check $php_exe "php|phtml" $unstage_on_error
+# write-host
 
 php_cs_check $php_cs "php" $unstage_on_error
 write-host
