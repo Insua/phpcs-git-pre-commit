@@ -13,7 +13,8 @@ foreach ($files as $file) {
     $count = $totals['errors'] + $totals['warnings'];
     $errorCount += $count;
     if ($count > 0) {
-        print_r(shell_exec($phpcsCommand." -n ".$file));
+        $report = shell_exec($phpcsCommand." ".$file);
+        print_r($report);
     }
 }
 exit($errorCount === 0 ? 0 : 1);
