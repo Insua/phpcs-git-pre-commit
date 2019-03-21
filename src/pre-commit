@@ -15,6 +15,8 @@ foreach ($files as $file) {
     if ($count > 0) {
         $report = shell_exec($phpcsCommand." ".$file);
         print_r($report);
+    } else {
+        print_r($file." pass".PHP_EOL);
     }
 }
 exit($errorCount === 0 ? 0 : 1);
