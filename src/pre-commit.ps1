@@ -81,6 +81,8 @@ function php_cs_check {
                 write-host "SKIPPED! (database file)" -foregroundcolor "darkGreen" -backgroundcolor "black"
             } elseif ($file -match "vendor\/") {
                 write-host "SKIPPED! (vendor file)" -foregroundcolor "darkGreen" -backgroundcolor "black"
+            } elseif ($file -match "resources\/") {
+                write-host "SKIPPED! (resources file)" -foregroundcolor "darkGreen" -backgroundcolor "black"
             }  else {
                 $errors = & $php_cs --standard=PSR2 -n --colors --report-width=120 $file
 

@@ -4,7 +4,7 @@
 $phpcsCommand = "./vendor/bin/phpcs --standard=PSR2 --encoding=utf-8";
 $files = shell_exec("git diff --cached --name-only --diff-filter=ACMR HEAD | grep \\\\.php");
 $files = array_filter(explode(PHP_EOL, $files), function ($value) {
-    return strlen($value) > 3 && is_file($value) && preg_match('/(tests|database|vendor)\//', $value) === 0;
+    return strlen($value) > 3 && is_file($value) && preg_match('/(tests|database|vendor|resources)\//', $value) === 0;
 });
 $errorCount = 0;
 foreach ($files as $file) {
